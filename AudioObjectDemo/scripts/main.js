@@ -1,4 +1,4 @@
-const AudioObject = require("./AudioObject.js");
+const AudioObject = require("./sparkar-audio-object.js");
 
 // Create the audio objects
 const startSFX = AudioObject.new("start_sound_speaker", "start_sound_controller");
