@@ -5,9 +5,9 @@ const Audio = require("Audio");
 
 /**
  * Generate an AudioObject from a connected Speaker and Audio Playback Controller
- * @param {string} speakerObjectName      The name of the Speaker SceneObject
- * @param {string} playbackControllerName The name of the Audio Playback Controller
- * @return {Object}                       An AudioObject referencing the specified Speaker and Playback Controller
+ * @param  {string} speakerObjectName      The name of the Speaker SceneObject
+ * @param  {string} playbackControllerName The name of the Audio Playback Controller
+ * @return {Object}                        An AudioObject referencing the specified Speaker and Playback Controller
  */
 function AudioObject(speakerObjectName, playbackControllerName) {
   var audioObject = {
@@ -29,7 +29,7 @@ function AudioObject(speakerObjectName, playbackControllerName) {
      * @type {ScalarSignal}
      */
     set volume(vol) {
-    	// Allow setting either a primitive or a ScalarSignal
+      // Allow setting either a primitive or a ScalarSignal
       const volSignal = vol.pinLastValue ? vol : Reactive.val(vol);
       this._volume = volSignal;
       this._speaker.volume = volSignal.mul(this._volumeMultiplier);
@@ -92,11 +92,11 @@ function AudioObject(speakerObjectName, playbackControllerName) {
 module.exports = {
   /**
    * Generate an AudioObject from a connected Speaker and Audio Playback Controller
-   * @param {string} speakerObjectName      The name of the Speaker SceneObject
-   * @param {string} playbackControllerName The name of the Audio Playback Controller
-   * @return {Object}                       An AudioObject referencing the specified Speaker and Playback Controller
+   * @param  {string} speakerObjectName      The name of the Speaker SceneObject
+   * @param  {string} playbackControllerName The name of the Audio Playback Controller
+   * @return {Object}                        An AudioObject referencing the specified Speaker and Playback Controller
    */
-	new: (speakerObjectName, playbackControllerName) => {
-		return AudioObject(speakerObjectName, playbackControllerName);
-	}
+  new: (speakerObjectName, playbackControllerName) => {
+    return AudioObject(speakerObjectName, playbackControllerName);
+  }
 };

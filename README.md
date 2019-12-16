@@ -1,8 +1,8 @@
-# Spark AR - AudioObject
+# Spark AR - Audio Object
 
 ## Description
 
-This AudioObject implementation which helps to unify Audio Playback Controllers with the Speakers they are connected to. These AudioObjects offer playback controls, as well as a volume fading utility.
+This AudioObject implementation helps to unify Audio Playback Controllers with the Speakers they are connected to. These AudioObjects offer playback controls, as well as a volume fading utility.
 
 In order to use the AudioObject, the referenced Audio Playback Controller must already be linked to an imported audio asset, and connected to a Speaker SceneObject.
 
