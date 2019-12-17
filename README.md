@@ -13,16 +13,16 @@ const AudioObject = require("sparkar-audio-object.js");
 
 // Create the audio objects
 const startSFX = AudioObject.new({
-	speakerName: "start_sound_speaker",
-	controllerName: "start_sound_controller",
+  speakerName: "start_sound_speaker",
+  controllerName: "start_sound_controller",
 });
 const drumLoop = AudioObject.new({
-	speakerName: "drum_loop_speaker",
-	controllerName: "drum_loop_controller",
+  speakerName: "drum_loop_speaker",
+  controllerName: "drum_loop_controller",
 });
 const guitarLoop = AudioObject.new({
-	speakerName: "guitar_loop_speaker",
-	controllerName: "guitar_loop_controller",
+  speakerName: "guitar_loop_speaker",
+  controllerName: "guitar_loop_controller",
 });
 
 // Play the startup sound
@@ -36,10 +36,10 @@ guitarLoop.loop();
 
 // Fade in the drum loop slowly, and then the guitar loop quickly
 drumLoop.fadeToVolume({
-	target: 1,
-	fadeTime: 4000,
-	completion: () => {
-		guitarLoop.fadeToVolume({target: 1, fadeTime: 200});
-	},
+  target: 1,
+  fadeTime: 4000,
+  completion: () => {
+    guitarLoop.fadeToVolume({target: 1, fadeTime: 200});
+  },
 });
 ```
