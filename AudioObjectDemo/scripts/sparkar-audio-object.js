@@ -5,7 +5,7 @@ const Audio = require("Audio");
 
 /**
  * Generate an AudioObject from a connected Speaker and Audio Playback Controller
- * @param  {Object} config                Configuration parameters for the audioObject
+ * @param  {Object} config                Configuration parameters for the AudioObject
  * @param  {string} config.speakerName    The name of the Speaker SceneObject
  * @param  {string} config.controllerName The name of the Audio Playback Controller
  * @return {Object}                       An AudioObject referencing the specified Speaker and Playback Controller
