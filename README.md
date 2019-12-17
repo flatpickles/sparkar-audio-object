@@ -9,12 +9,21 @@ In order to use the AudioObject, the referenced Audio Playback Controller must a
 ## Usage
 
 ```javascript
-const AudioObject = require("sparkar-audio-object");
+const AudioObject = require("sparkar-audio-object.js");
 
 // Create the audio objects
-const startSFX = AudioObject.new("start_sound_speaker", "start_sound_controller");
-const drumLoop = AudioObject.new("drum_loop_speaker", "drum_loop_controller");
-const guitarLoop = AudioObject.new("guitar_loop_speaker", "guitar_loop_controller");
+const startSFX = AudioObject.new({
+	speakerName: "start_sound_speaker",
+	controllerName: "start_sound_controller",
+});
+const drumLoop = AudioObject.new({
+	speakerName: "drum_loop_speaker",
+	controllerName: "drum_loop_controller",
+});
+const guitarLoop = AudioObject.new({
+	speakerName: "guitar_loop_speaker",
+	controllerName: "guitar_loop_controller",
+});
 
 // Play the startup sound
 startSFX.play();
@@ -26,7 +35,11 @@ guitarLoop.volume = 0;
 guitarLoop.loop();
 
 // Fade in the drum loop slowly, and then the guitar loop quickly
-drumLoop.fadeToVolume(1, 4000, () => {
-    guitarLoop.fadeToVolume(1, 200);
+drumLoop.fadeToVolume({
+	target: 1,
+	fadeTime: 4000,
+	completion: () => {
+		guitarLoop.fadeToVolume({target: 1, fadeTime: 200});
+	},
 });
 ```
