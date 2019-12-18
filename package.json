@@ -1,0 +1,23 @@
+{
+  "name": "sparkar-audio-object",
+  "version": "1.0.0",
+  "description": "A helper object to unify Audio Playback Controllers and Speakers in Spark AR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/man1/sparkar-audio-object.git"
+  },
+  "keywords": [
+    "sparkar",
+    "audio"
+  ],
+  "author": "Matt Nichols",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/man1/sparkar-audio-object/issues"
+  },
+  "homepage": "https://github.com/man1/sparkar-audio-object#readme"
+}
