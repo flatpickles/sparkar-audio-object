@@ -9,7 +9,7 @@ In order to use the AudioObject, the referenced Audio Playback Controller must a
 ## Usage
 
 ```javascript
-const AudioObject = require("sparkar-audio-object.js");
+const AudioObject = require("sparkar-audio-object");
 
 // Create the audio objects
 const startSFX = AudioObject.new({
