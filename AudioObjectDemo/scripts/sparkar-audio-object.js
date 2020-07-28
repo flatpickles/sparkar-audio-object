@@ -8,16 +8,16 @@ const Audio = require("Audio");
  * @param  {Object} config                Configuration parameters for the AudioObject
  * @param  {string} config.speakerName    The name of the Speaker SceneObject
  * @param  {string} config.controllerName The name of the Audio Playback Controller
- * @return {Object}                       An AudioObject referencing the specified Speaker and Playback Controller
+ * @return {Promise<Object>}              An AudioObject referencing the specified Speaker and Playback Controller
  */
-function AudioObject(config) {
+async function AudioObject(config) {
   const speakerObjectName = config.speakerName;
   const playbackControllerName = config.controllerName;
 
   var audioObject = {
-    _volume: Reactive.val(Scene.root.find(speakerObjectName).volume.pinLastValue()),
-    _speaker: Scene.root.find(speakerObjectName),
-    _controller: Audio.getPlaybackController(playbackControllerName),
+    _volume: Reactive.val((await Scene.root.findFirst(speakerObjectName)).volume.pinLastValue()),
+    _speaker: await Scene.root.findFirst(speakerObjectName),
+    _controller: await Audio.getAudioPlaybackController(playbackControllerName),
     _volumeMultiplier: Reactive.val(1.0),
 
     /**
@@ -76,7 +76,7 @@ function AudioObject(config) {
     const fadeTime = config.fadeTime;
     const completion = config.completion;
 
-    const driver = Animation.timeDriver({durationMilliseconds: fadeTime});
+    const driver = Animation.timeDriver({ durationMilliseconds: fadeTime });
     const crossfadeA = Animation.animate(driver, Animation.samplers.linear(0, 1));
     const crossfadeB = Reactive.val(1.0).sub(crossfadeA);
     const signal = crossfadeA.mul(target).add(crossfadeB.mul(audioObject.volume));
@@ -104,7 +104,7 @@ module.exports = {
    * @param  {Object} config                Configuration parameters for the audioObject
    * @param  {string} config.speakerName    The name of the Speaker SceneObject
    * @param  {string} config.controllerName The name of the Audio Playback Controller
-   * @return {Object}                       An AudioObject referencing the specified Speaker and Playback Controller
+   * @return {Promise<Object>}                       An AudioObject referencing the specified Speaker and Playback Controller
    */
   new: (config) => {
     return AudioObject(config);
